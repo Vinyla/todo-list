@@ -1,14 +1,18 @@
 import React from 'react';
 
-const TodoItems = () => {
-
- return (
-   <div className='test'>
-     <div className='list'>
-       <p></p>
-     </div>
-   </div>
- );
-}
+const TodoItems = ({ todos, removeTodo }) => {
+  return (
+    <div>
+      {todos.map((todo) => (
+        <div
+          key={todo.text}
+          className='list'
+          onClick={() => removeTodo(todo.text)} >
+          {todo.text}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default TodoItems;

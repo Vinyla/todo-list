@@ -1,6 +1,7 @@
-import TodoList from "./TodoList";
+import React from 'react';
+import TodoList from './TodoList';
 
-const Form = () => {
+const Form = ({ input, setInput, todos, setTodos }) => {
   return (
     <div className='container'>
       <div className='form'>
@@ -8,7 +9,12 @@ const Form = () => {
           <h3>My Plan for Today</h3>
         </div>
         <div className='form-body'>
-          <TodoList />
+          <TodoList
+            todos={todos}
+            setTodos={setTodos}
+            input={input}
+            setInput={setInput}
+          />
         </div>
       </div>
     </div>

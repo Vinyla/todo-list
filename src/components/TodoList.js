@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
-// import TodoItems from './TodoItems';
+import TodoItems from './TodoItems';
 
 const TodoList = () => {
-  const [todo, setTodo] = useState('');
+  const [input, setInput] = useState('');
   const [todos, setTodos] = useState([]);
 
   const changeHandler = (e) => {
-    setTodo(e.target.value);
+    setInput(e.target.value);
   };
 
-  const addTodos = (e) => {
+  const submitTodos = (e) => {
     e.preventDefault();
-    const newTodos = [todo, ...todos];
+    const newTodos = [
+      ...todos,
+      {
+        text: input
+      }
+    ];
     setTodos(newTodos);
-    setTodo('');
+    setInput('');
   };
+  
+  const removeTodo = text => {
+    const removeArr = [...todos].filter(input => input.text !== text)
+    setTodos(removeArr)
+  }
 
   return (
     <div>
@@ -23,18 +33,14 @@ const TodoList = () => {
           className='form-input'
           type='text'
           placeholder='Add a todo'
-          value={todo}
+          value={input}
           onChange={changeHandler}
         />
-        <button type='submit' onClick={addTodos}>
+        <button type='submit' onClick={submitTodos} disabled={input.length < 1}>
           add
         </button>
       </form>
-      {todos.map((index) => (
-        <div className='list' key={index}>
-          {todos}
-        </div>
-      ))}
+      <TodoItems todos={todos} setTodos={setTodos} removeTodo={removeTodo} />
     </div>
   );
 };
