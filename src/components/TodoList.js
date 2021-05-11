@@ -33,20 +33,32 @@ const TodoList = () => {
   };
 
   return (
-    <div>
-      <form>
-        <input
-          className='form-input'
-          type='text'
-          placeholder='Add a todo'
-          value={input}
-          onChange={changeHandler}
-        />
-        <button type='submit' onClick={submitTodos} disabled={input.length < 1}>
-          add
-        </button>
-      </form>
-      <TodoItems todos={todos} setTodos={setTodos} removeTodo={removeTodo} />
+    <div className='container'>
+      <div className='form'>
+        <div className='form-header'>
+          <h3>My Plan for Today</h3>
+        </div>
+        <div className='form-body'>
+          <form>
+            <input
+              className='form-input'
+              type='text'
+              placeholder='Add a todo'
+              value={input}
+              onChange={changeHandler} />
+            <button
+              type='submit'
+              onClick={submitTodos}
+              disabled={input.length < 1} >
+              add
+            </button>
+          </form>
+          <TodoItems
+            todos={todos}
+            setTodos={setTodos}
+            removeTodo={removeTodo} />
+        </div>
+      </div>
     </div>
   );
 };
