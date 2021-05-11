@@ -48,21 +48,15 @@ button {
   color: #ffffff;
 }
 
-.test {
-  margin-top: 20px;
-}
-
 .list {
+  margin-top: 20px;
   padding: 12px 20px;
   vertical-align: middle;
   border-radius: 5px;
   cursor: pointer;
+  text-align: left;
+  font-size: 14px;
   background-color: #c5d7bd;
+  color: #383e56;
 }
 
-.list p {
-  font-size: 12px;
-  margin: auto;
-  text-align: left;
-  /* text-decoration: line-through; */
-}
