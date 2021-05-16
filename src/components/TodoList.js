@@ -5,16 +5,16 @@ const TodoList = () => {
   const [input, setInput] = useState('');
   const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
-    const data = JSON.parse(localStorage.getItem('myLocalStorage'));
-    if (todos) {
-      setTodos(data);
-    }
-  }, []);
+    useEffect(() => {
+      const data = JSON.parse(localStorage.getItem('myLocalStorage'));
+      if (data) {
+        setTodos(data);
+      }
+    }, []);
 
-  useEffect(() => {
-    localStorage.setItem('myLocalStorage', JSON.stringify(todos));
-  }, [todos]);
+    useEffect(() => {
+      localStorage.setItem('myLocalStorage', JSON.stringify(todos));
+    }, [todos]);
 
   const changeHandler = (e) => {
     setInput(e.target.value);
@@ -22,16 +22,15 @@ const TodoList = () => {
 
   const submitTodos = (e) => {
     e.preventDefault();
-    const newTodos = [...todos, { text: input }];
+    const newTodos = [...todos, input];
     setTodos(newTodos);
     setInput('');
   };
 
   const removeTodo = (text) => {
-    const removeArr = [...todos].filter((input) => input.text !== text);
+    const removeArr = [...todos].filter((input) => input !== text);
     setTodos(removeArr);
   };
-
   return (
     <div className='container'>
       <div className='form'>
@@ -53,10 +52,7 @@ const TodoList = () => {
               add
             </button>
           </form>
-          <TodoItems
-            todos={todos}
-            setTodos={setTodos}
-            removeTodo={removeTodo} />
+          <TodoItems todos={todos} removeTodo={removeTodo} />
         </div>
       </div>
     </div>
