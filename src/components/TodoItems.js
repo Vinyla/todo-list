@@ -7,7 +7,7 @@ const TodoItems = ({ todos, removeTodo }) => {
           <div
             key={index}
             className='list'
-            onClick={() => removeTodo(todo)} >
+            onClick={() => removeTodo(index)} >
             {todo}
           </div>
         ))}

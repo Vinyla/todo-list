@@ -17,7 +17,7 @@ const TodoList = () => {
     }, [todos]);
 
   const changeHandler = (e) => {
-    setInput(e.target.value);
+    setInput(e.target.value)
   };
 
   const submitTodos = (e) => {
@@ -27,8 +27,8 @@ const TodoList = () => {
     setInput('');
   };
 
-  const removeTodo = (text) => {
-    const removeArr = [...todos].filter((input) => input !== text);
+  const removeTodo = (index) => {
+    const removeArr = [...todos].filter((input, ind) => ind !== index);
     setTodos(removeArr);
   };
   return (
@@ -39,7 +39,7 @@ const TodoList = () => {
         </div>
         <div className='form-body'>
           <form>
-            <input
+            <input required
               className='form-input'
               type='text'
               placeholder='Add a todo'
