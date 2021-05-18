@@ -47,6 +47,11 @@ button {
   background-color: #fb743e;
   color: #ffffff;
 }
+button:disabled,
+button[disabled]{
+   background-color: #cccccc;
+  color: #666666;
+}
 
 .list {
   margin-top: 20px;
